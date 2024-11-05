@@ -6,36 +6,42 @@ const pizzaPrice = 80;
 
 //Put your Javscript code here:
 
-alert(
-  `Hey! Happy to serve your pizza. On our menu we have ${vegetarian}, ${hawaiian} and ${pepperoni}`
-);
+const welcome = document.getElementById("welcome");
+welcome.textContent = `Hey! Happy to serve your pizza. On our menu we have ${vegetarian}, ${hawaiian} and ${pepperoni}`;
+
+const orderStart = document.getElementById("orderStart");
+
+const btn = document.getElementById("btn");
+btn.addEventListener("click", () => {
+  const orderName = document.getElementById("pizzaInput").value.toLowerCase();
+  const orderQuantity = parseFloat(
+    document.getElementById("quantityInput").value
+  );
+
+  if (!checkOrderName(orderName)) {
+    orderStart.textContent =
+      "Sorry we don't serve that pizza, we have hawaiian, vegetarian and pepperoni pizza. Please try again.";
+  } else if (!orderQuantity) {
+    orderStart.textContent =
+      "Please enter how many pizzas you would like to order.";
+  } else {
+    orderStart.textContent = `Great, I'll get started on your ${
+      orderQuantity > 1 ? orderName + "s" : orderName
+    } right away, it will cost you ${totalCost(
+      orderQuantity
+    )} kr. The ${pizzaString(orderQuantity)} will take ${cookingTime(
+      orderQuantity
+    )} minutes`;
+  }
+});
 
 function checkOrderName(orderInput) {
-  if (
+  return (
     orderInput == "vegetarian" ||
     orderInput == "hawaiian" ||
     orderInput == "pepperoni"
-  ) {
-    return true;
-  }
+  );
 }
-
-let orderName;
-while (true) {
-  orderName = prompt(
-    "Enter the name of the pizza you want to order today."
-  ).toLowerCase();
-
-  if (!checkOrderName(orderName)) {
-    alert(
-      "Sorry we dont serve that pizza, we have hawaiian, vegetarian and pepperoni pizza. Please try again."
-    );
-  } else {
-    break;
-  }
-}
-
-const orderQuantity = prompt(`How many of ${orderName} do you want?`);
 
 function totalCost(quantity) {
   return quantity * pizzaPrice;
@@ -54,11 +60,3 @@ function cookingTime(quantity) {
     return 20;
   }
 }
-
-alert(
-  `Great, I'll get started on your ${orderName} right away, it will cost you ${totalCost(
-    orderQuantity
-  )} kr. The ${pizzaString(orderQuantity)} will take ${cookingTime(
-    orderQuantity
-  )} minutes`
-);

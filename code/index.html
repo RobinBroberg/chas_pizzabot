@@ -4,13 +4,28 @@
     <meta charset="utf-8" />
     <title>Pizzabot</title>
   </head>
-  <body>
-    <div>Enter the name of the pizza you want to order today.</div>
-    <label>Pizza</label>
-    <input id="pizzaInput" type="text" />
-    <label>Antal</label>
-    <input id="quantityInput" type="text" />
-
+  <body
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    "
+  >
+    <div>
+      <div id="welcome"></div>
+      <br />
+      <div>Enter the name of the pizza you want to order today.</div>
+      <br />
+      <label>Name</label>
+      <input id="pizzaInput" type="text" />
+      <label style="margin-left: 5px">Quantity</label>
+      <input id="quantityInput" type="number" />
+      <button id="btn">Order</button>
+      <div id="wrongInput"></div>
+      <br />
+      <div id="orderStart"></div>
+    </div>
     <script src="./pizzabot.js" charset="utf-8"></script>
   </body>
 </html>

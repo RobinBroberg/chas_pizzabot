@@ -10,8 +10,8 @@ const welcome = document.getElementById("welcome");
 welcome.textContent = `Hey! Happy to serve your pizza. On our menu we have ${vegetarian}, ${hawaiian} and ${pepperoni}`;
 
 const orderStart = document.getElementById("orderStart");
-
 const btn = document.getElementById("btn");
+
 btn.addEventListener("click", () => {
   const orderName = document.getElementById("pizzaInput").value.toLowerCase();
   const orderQuantity = parseFloat(
